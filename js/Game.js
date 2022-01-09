@@ -30,7 +30,6 @@ class Game {
      * Begins game by selecting a random phrase and displaying it to user
      */
     startGame() {
-        const overlay = document.getElementById('overlay');
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
@@ -48,8 +47,8 @@ class Game {
      * Handles onscreen keyboard button clicks
      * @param (HTMLButtonElement) button - The clicked button element
      * Disables the clicked keyboard button
-     * Calls removeLife() when random phrase doesn't includes guessed letter
      * Calls showMatchedLetter() when random phrase includes guessed letter
+     * Calls removeLife() when random phrase doesn't includes guessed letter
      */
     handleInteraction(button) {
         button.disabled = true;
@@ -98,8 +97,8 @@ class Game {
 
         gameWon ?
             (gameOverMessage.textContent="You won!",
-                overlay.classList.remove("start"), overlay.classList.remove("lose"), overlay.classList.add("win")):
+                overlay.classList.remove('start','lose'), overlay.classList.add("win")):
             (gameOverMessage.textContent="Sorry, better luck next time!",
-                overlay.classList.remove("start"),overlay.classList.remove("win"), overlay.classList.add("lose"));
+                overlay.classList.remove('start','win'), overlay.classList.add("lose"));
     };
 }
