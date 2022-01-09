@@ -98,8 +98,8 @@ class Game {
 
         gameWon ?
             (gameOverMessage.textContent="You won!",
-                overlay.classList.remove("start", "lose"),overlay.classList.add("win")):
+                overlay.classList.remove("start"), overlay.classList.remove("lose"), overlay.classList.add("win")):
             (gameOverMessage.textContent="Sorry, better luck next time!",
-                overlay.classList.remove("start", "win"),overlay.classList.add("lose"));
+                overlay.classList.remove("start"),overlay.classList.remove("win"), overlay.classList.add("lose"));
     };
 }
