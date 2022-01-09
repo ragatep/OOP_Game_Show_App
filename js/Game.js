@@ -1,6 +1,8 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
- * Game.js */
+ * Student: Ryan Agatep
+ * Game.js 
+ */
 
 'use strict'; 
 
@@ -25,17 +27,6 @@ class Game {
         return phrases;
     }
     /**
-     * Selects random phrase from phrases property
-     * @return {Object} Phrase object chosen to be used
-     */
-    
-     getRandomPhrase() {
-        let randomNumber = Math.floor(Math.random() * this.phrases.length);
-        let randomPhraseObject = this.phrases[randomNumber];
-        return randomPhraseObject;
-    };
-
-    /**
      * Begins game by selecting a random phrase and displaying it to user
      */
     startGame() {
@@ -43,6 +34,36 @@ class Game {
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
+    };
+    /**
+     * Selects random phrase from phrases property
+     * @return {Object} Phrase object chosen to be used
+     */
+    getRandomPhrase() {
+        let randomNumber = Math.floor(Math.random() * this.phrases.length);
+        let randomPhraseObject = this.phrases[randomNumber];
+        return randomPhraseObject;
+    };
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - The clicked button element
+     * Disables the clicked keyboard button
+     * Calls removeLife() when random phrase doesn't includes guessed letter
+     * Calls showMatchedLetter() when random phrase includes guessed letter
+     */
+    handleInteraction(button) {
+        button.disabled = true;
+        const guessedLetter = button.textContent;
+        if(this.activePhrase.checkLetter(guessedLetter)) {
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(guessedLetter);
+            if(this.checkForWin()){
+                this.gameOver(true);
+            }
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
     };
     /**
      * Checks for winning move
@@ -77,29 +98,8 @@ class Game {
 
         gameWon ?
             (gameOverMessage.textContent="You won!",
-                overlay.classList.remove("start"),overlay.classList.add("win")):
+                overlay.classList.remove("start", "lose"),overlay.classList.add("win")):
             (gameOverMessage.textContent="Sorry, better luck next time!",
-                overlay.classList.remove("start"),overlay.classList.add("lose"));
-    };
-    /**
-     * Handles onscreen keyboard button clicks
-     * @param (HTMLButtonElement) button - The clicked button element
-     * Disables the clicked keyboard button
-     * Calls removeLife() when random phrase doesn't includes guessed letter
-     * Calls showMatchedLetter() when random phrase includes guessed letter
-     */
-    handleInteraction(button) {
-        button.disabled = true;
-        const guessedLetter = button.textContent;
-        if(this.activePhrase.checkLetter(guessedLetter)) {
-            button.classList.add('chosen');
-            this.activePhrase.showMatchedLetter(guessedLetter);
-            if(this.checkForWin()){
-                this.gameOver(true);
-            }
-        } else {
-            button.classList.add('wrong');
-            this.removeLife();
-        }
+                overlay.classList.remove("start", "win"),overlay.classList.add("lose"));
     };
 }

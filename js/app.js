@@ -1,6 +1,8 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
- * app.js */
+ * Student: Ryan Agatep
+ * app.js 
+ */
 
 'use strict'; 
 
@@ -14,6 +16,9 @@ let game;
 
 // Listens for click on 'btn__reset'
 startButton.addEventListener('click', () => {
+    /** 
+     * Resets the gameboard and creates a new game
+     */
     phraseUL.innerHTML = '';
     osKeyboardKeys.forEach(key => {
         key.classList.remove('chosen', 'wrong');
