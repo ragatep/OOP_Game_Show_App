@@ -7,15 +7,15 @@ I built this [browser-based, word guessing game](https://ragatep.github.io/OOP_G
 
 How to play **PHRASE HUNTER**
 
-- After clicking on the Start Gamne button, the PHRASE HUNTER gameboard will load a random phrase with its letters represented by blank boxes.
+- After clicking on the Start Game button, the PHRASE HUNTER gameboard will load a random phrase with its letters represented by blank boxes.
 
-- Guess a letter by clicking on a key frpm the onscreen keyboard to complete the phrase. You can only guess a letter once and allowed to make five incorrect guesses.
+- Guess a letter by clicking on a key from the onscreen keyboard to complete the phrase. You can only guess a letter once and are allowed to make five incorrect guesses.
 
 - If the letter guessed is in the phrase, the gameboard displays the chosen letters on the screen.
 
 - Continue to click on letters until you complete the phrase (and win), or make five incorrect guesses (and lose).
 
-- If you complete the before you run out of guesses, a winning screen appears. If you guess incorrectly fives times, a losing screen appears. If
+- A winning screen appears if you complete the phrase before you run out of guesses. If you guess fives times incorrectly, a losing screen appears.
 
 *Good luck.*
 ~ryan
